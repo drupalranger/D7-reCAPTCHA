@@ -1,0 +1,21 @@
+<?php
+
+module_load_include('inc', 'ds_recaptcha', 'includes/ds_recaptcha.admin');
+module_load_include('inc', 'ds_recaptcha', 'includes/ds_recaptcha.forms');
+module_load_include('inc', 'ds_recaptcha', 'includes/ds_recaptcha.theme');
+
+/**
+ * Implements hook_menu()
+ */
+function ds_recaptcha_menu(){
+  $items = array();
+  $items['admin/config/services/ds_recaptcha'] = array(
+    'title' => 'Google reCaptcha integration',
+    'description' => 'Configuration form for google reCaptcha integration module',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ds_recaptcha_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
