@@ -1,5 +1,5 @@
 (function($) {
-  Drupal.behaviors.ds_captcha = {
+  Drupal.behaviors.ds_recaptcha = {
     attach(context, drupalSettings) {
       // Grab form IDs from settings and loop through them.
        for(const formId in drupalSettings.ds_recaptcha.form_ids) {
