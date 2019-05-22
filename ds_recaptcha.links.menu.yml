@@ -1,0 +1,5 @@
+ds_recaptcha.settings:
+  title: 'DS reCaptcha'
+  description: 'Configure recaptcha v2 verification'
+  parent: system.admin_config_services
+  route_name: ds_recaptcha.settings

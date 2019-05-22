@@ -1,21 +1,32 @@
 <?php
 
-module_load_include('inc', 'ds_recaptcha', 'includes/ds_recaptcha.admin');
-module_load_include('inc', 'ds_recaptcha', 'includes/ds_recaptcha.forms');
-module_load_include('inc', 'ds_recaptcha', 'includes/ds_recaptcha.theme');
+/**
+ * @file
+ */
+
+use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Implements hook_menu()
+ * Implements hook_form_alter().
  */
-function ds_recaptcha_menu(){
-  $items = array();
-  $items['admin/config/services/ds_recaptcha'] = array(
-    'title' => 'Google reCaptcha integration',
-    'description' => 'Configuration form for google reCaptcha integration module',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('ds_recaptcha_form'),
-    'access arguments' => array('access administration pages'),
-    'type' => MENU_NORMAL_ITEM,
-  );
-  return $items;
+function ds_recaptcha_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if(\Drupal::currentUser()->hasPermission('bypass ds_recaptcha')){
+    return;
+  }
+
+  $config = \Drupal::configFactory()->get('ds_recaptcha.config');
+
+  $form_ids = explode(',', $config->get('form_ids'));
+  $form['#attributes']['data-recaptcha-id'] = $form_id;
+  $div_id = $form['#form_id'] . '-captcha';
+  // Wrapper for reCAPTCHA widget.
+  $form['actions']['captcha']['#markup'] = '<div id="' . $div_id . '" class="captcha captcha-wrapper"></div>';
+  $form['actions']['captcha']['#weight'] = -1;
+  // Helper JS.
+  $form['#attached']['drupalSettings']['ds_recaptcha']['sitekey'] = $config->get('site_key');
+  foreach($form_ids as $id){
+    $form['#attached']['drupalSettings']['ds_recaptcha']['form_ids'][] = $id;
+  }
+  $form['#attached']['library'][] = 'ds_recaptcha/ds_recaptcha';
+  return $form;
 }

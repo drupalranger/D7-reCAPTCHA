@@ -1,0 +1,14 @@
+ds_recaptcha.settings:
+  path: '/admin/config/services/ds_recaptcha'
+  defaults:
+    _form: '\Drupal\ds_recaptcha\Form\RecaptchaSettingsForm'
+    _title: 'ReCaptcha v2 settings'
+  requirements:
+    _permission: 'administer ds_recaptcha'
+ds_recaptcha.verify_response:
+  path: '/api/ds_recaptcha/verify'
+  defaults:
+    _controller: 'Drupal\ds_recaptcha\Controller\RecaptchaController:verifyResponse'
+    _title: 'Verify reCaptcha response'
+  requirements:
+    _permission: 'access content'

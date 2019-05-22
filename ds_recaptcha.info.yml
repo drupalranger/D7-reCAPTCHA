@@ -1,0 +1,6 @@
+name: DS Recaptcha
+type: module
+description: reCaptcha integration for mutilple forms displayed on single page
+core: 8.x
+package: Custom
+configure: ds_recaptcha.settings

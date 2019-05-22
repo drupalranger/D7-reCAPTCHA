@@ -1,0 +1,6 @@
+administer ds_recaptcha:
+  title: 'Administer DS reCaptcha'
+  description: 'Access configuration of DS reCaptcha module.'
+bypass ds_recaptcha:
+  title: 'Bypass DS reCaptcha verification'
+  description: 'Bypass reCaptcha verification added to forms.'
