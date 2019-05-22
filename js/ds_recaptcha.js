@@ -2,11 +2,11 @@
   Drupal.behaviors.ds_captcha = {
     attach(context, drupalSettings) {
       // Grab form IDs from settings and loop through them.
-      drupalSettings.ds_recaptcha.form_ids.forEach(formId => {
+       for(const formId in drupalSettings.ds_recaptcha.form_ids) {
         const $form = $(`form[data-recaptcha-id="${formId}"]`);
         $form.once("ds-captcha").each(() => {
           // Disable submit buttons on form.
-          const $submit = $form.find('input[type="submit"]');
+          const $submit = $form.find('[type="submit"]');
           $submit.attr("data-disabled", "true");
 
           const captchas = [];
@@ -58,7 +58,7 @@
             }
           });
         });
-      });
+      }
     }
   };
 })(jQuery);

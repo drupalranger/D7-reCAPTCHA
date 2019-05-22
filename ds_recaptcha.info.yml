@@ -1,4 +1,4 @@
-name: DS Recaptcha
+name: DS reCaptcha
 type: module
 description: reCaptcha integration for mutilple forms displayed on single page
 core: 8.x

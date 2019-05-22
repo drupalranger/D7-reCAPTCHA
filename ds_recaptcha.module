@@ -17,6 +17,10 @@ function ds_recaptcha_form_alter(&$form, FormStateInterface $form_state, $form_i
   $config = \Drupal::configFactory()->get('ds_recaptcha.config');
 
   $form_ids = explode(',', $config->get('form_ids'));
+  if(!in_array($form_id, $form_ids)){
+    return;
+  }
+
   $form['#attributes']['data-recaptcha-id'] = $form_id;
   $div_id = $form['#form_id'] . '-captcha';
   // Wrapper for reCAPTCHA widget.
@@ -25,7 +29,7 @@ function ds_recaptcha_form_alter(&$form, FormStateInterface $form_state, $form_i
   // Helper JS.
   $form['#attached']['drupalSettings']['ds_recaptcha']['sitekey'] = $config->get('site_key');
   foreach($form_ids as $id){
-    $form['#attached']['drupalSettings']['ds_recaptcha']['form_ids'][] = $id;
+    $form['#attached']['drupalSettings']['ds_recaptcha']['form_ids'][$id] = $id;
   }
   $form['#attached']['library'][] = 'ds_recaptcha/ds_recaptcha';
   return $form;

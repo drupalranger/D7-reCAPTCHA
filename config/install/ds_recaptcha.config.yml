@@ -1,3 +1,3 @@
-form_ids: ''
+form_ids: 'user_pass,user_register_form'
 site_key: ''
-secret_key: 'user_pass,user_register_form'
+secret_key: ''

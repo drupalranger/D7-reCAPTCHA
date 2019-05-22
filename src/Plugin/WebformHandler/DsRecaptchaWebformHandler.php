@@ -127,13 +127,13 @@ class DsRecaptchaWebformHandler extends WebformHandlerBase {
     $info = $form_state->getBuildInfo();
     $config = $this->configFactory->get('ds_recaptcha');
     $form['#attributes']['data-recaptcha-id'] = $info['form_id'];
-    $div_id = $form['#form_id'] . '-captcha';
+    $div_id = $info['form_id'] . '-captcha';
     // Wrapper for reCAPTCHA widget.
     $form['actions']['captcha']['#markup'] = '<div id="' . $div_id . '" class="captcha captcha-wrapper"></div>';
     $form['actions']['captcha']['#weight'] = -1;
     // Helper JS.
     $form['#attached']['drupalSettings']['ds_recaptcha']['sitekey'] = $config->get('site_key');
-    $form['#attached']['drupalSettings']['ds_recaptcha']['form_ids'][] = $info['form_id'];
+    $form['#attached']['drupalSettings']['ds_recaptcha']['form_ids'][$info['form_id']] = $info['form_id'];
     $form['#attached']['library'][] = 'ds_recaptcha/ds_recaptcha';
     return $form;
   }
