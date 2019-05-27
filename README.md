@@ -1,6 +1,21 @@
 # D8-reCAPTCHA
 Custom Drupal 8 module providing reCAPTCHA v2 integration, crafted to work with different caching strategies, with multiple forms displayed on the same page.
 
+# Installation 
+Edit your composer.json and add following entry in repositories section:
+```
+repositories": [
+  {
+    "type": "vcs",
+    "url": "https://github.com/drupalranger/ds_recaptcha"
+  }
+] 
+```
+
+Next, run composer to install the module:
+```
+$ composer require dropsolid-drupal8/ds_recaptcha:^1.0
+```
 
 # Configuration 
 Navigate to /admin/config/services/ds_recaptcha and setup you site key and secret key. 
