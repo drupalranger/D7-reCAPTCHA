@@ -1,0 +1,17 @@
+{
+  "name": "dropsolid-drupal8/ds_recaptcha",
+  "description": "Drupal reCaptcha v2 integration.",
+  "type": "drupal-module",
+  "homepage": "https://github.com/drupalranger/ds_recaptcha",
+  "authors": [
+    {
+      "name": "Marek Tyczyński",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "docs": "https://github.com/drupalranger/ds_recaptcha/blob/8.x/README.md"
+  },
+  "require": {},
+  "minimum-stability": "dev"
+}
